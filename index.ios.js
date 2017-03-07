@@ -13,6 +13,8 @@ import {
   View,
   ListView,} from 'react-native';
 
+import Square from "./component/Square.js";
+
 //Step 2 :  write code CLASS : (Component) : RENDER
 // ex. 10 screen -> 10 class like this //
 // View == Component//too // small Component
@@ -22,10 +24,12 @@ class LearnReactnative extends Component {
       <View style={styles.container}>
         <SquareComponent></SquareComponent>
         <SquareComponent></SquareComponent>
+        <Square></Square>
       </View>
     );
   }
 }
+
 
 export default class SquareComponent extends Component{
   render(){
