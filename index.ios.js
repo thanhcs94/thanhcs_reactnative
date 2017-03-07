@@ -11,6 +11,7 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
   ListView,} from 'react-native';
 
 import Square from "./component/Square.js";
@@ -19,12 +20,23 @@ import Square from "./component/Square.js";
 // ex. 10 screen -> 10 class like this //
 // View == Component//too // small Component
 class LearnReactnative extends Component {
+  clickme(){
+     console.log('You click on my ass');
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Custome name = "Thanh Dep Trai"/>
-          <Custome name = "Nguyen Van Thanh"/>
-        <Square title = "From main class to Squre class " content = " this is a fucking content , second params"/>
+
+        <TouchableOpacity onPress = {()=>{this.clickme()}}>
+         <View style = {styles.button}>
+          <Text style = {{color:"#ffffff", textAlign: 'center'}}>This is a fucking button</Text>
+         </View>
+        </TouchableOpacity>
+
+        <Custome name="Thanh DT"/>
+        <Custome name="Thanh Nguyen"/>
+        <Square title = "this is a fucking title" content = "this is a fucking content" />
+
       </View>
     );
   }
@@ -50,8 +62,19 @@ const styles = StyleSheet.create({
     backgroundColor:'blue',
     borderWidth : 1,
     borderColor :'#cccccc',
-    padding: 10
+    padding: 10,
+    marginTop: 10,
+  },
+  button:{
+    width : 200,
+    height: 40,
+    backgroundColor:'blue',
+    borderWidth : 1,
+    borderColor :'#cccccc',
+    padding: 10,
+    marginTop: 100,
   }
+
 });
 
 
