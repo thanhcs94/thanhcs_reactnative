@@ -20,16 +20,29 @@ import Square from "./component/Square.js";
 // ex. 10 screen -> 10 class like this //
 // View == Component//too // small Component
 class LearnReactnative extends Component {
+
+  constructor(props){
+  super(props);
+  this.state = {
+    number:1,
+  }
+}
+
   clickme(){
      console.log('You click on my ass');
+     this.setState({
+        number:this.state.number+1 ,
+     });
   }
   render() {
     return (
       <View style={styles.container}>
 
+        <Text style = {{color:'red', fontSize:40, textAlign:'center'}}>{this.state.number}</Text>
+
         <TouchableOpacity onPress = {()=>{this.clickme()}}>
          <View style = {styles.button}>
-          <Text style = {{color:"#ffffff", textAlign: 'center'}}>This is a fucking button</Text>
+          <Text style = {{color:"#ffffff", textAlign: 'center'}}>This is a fucking button.. click me</Text>
          </View>
         </TouchableOpacity>
 
@@ -66,13 +79,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   button:{
-    width : 200,
+    width : 250,
     height: 40,
     backgroundColor:'blue',
     borderWidth : 1,
     borderColor :'#cccccc',
     padding: 10,
-    marginTop: 100,
+    marginTop: 40,
   }
 
 });
