@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -11,11 +10,17 @@ import {
       return(
         <View style = {stSquare.container}>
          <View style = {stSquare.square}>
+            <Text style = {{color:'#ffffff', textAlign:'center',}}>{this.props.title} {this.props.content}</Text>
          </View>
 
         </View>
       );
     }
+}
+
+Square.propType = {
+  title:React.PropTypes.string,
+  content:React.PropTypes.string,
 }
 
   const stSquare = StyleSheet.create({
@@ -28,7 +33,7 @@ import {
     square:{
       width: 100,
       height : 100,
-      backgroundColor:'red',
+      backgroundColor:'green',
       borderWidth : 1
     }
   });

@@ -22,19 +22,19 @@ class LearnReactnative extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <SquareComponent></SquareComponent>
-        <SquareComponent></SquareComponent>
-        <Square></Square>
+        <Custome name = "Thanh Dep Trai"/>
+          <Custome name = "Nguyen Van Thanh"/>
+        <Square title = "From main class to Squre class " content = " this is a fucking content , second params"/>
       </View>
     );
   }
 }
 
-
-export default class SquareComponent extends Component{
+export default class Custome extends Component{
   render(){
     return(
        <View style = {styles.square}>
+         <Text  style= {{color:'#ffffff'}}>{this.props.name}</Text>
        </View>
     );
   }
@@ -47,10 +47,10 @@ const styles = StyleSheet.create({
     marginTop:20
   },
   square:{
-    width: 100,
-    height : 100,
-    backgroundColor:'red',
-    borderWidth : 1
+    backgroundColor:'blue',
+    borderWidth : 1,
+    borderColor :'#cccccc',
+    padding: 10
   }
 });
 
