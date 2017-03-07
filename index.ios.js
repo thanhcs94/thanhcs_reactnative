@@ -4,6 +4,7 @@
  * @flow
  */
 
+//Step 1 : import library
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -12,55 +13,25 @@ import {
   View,
   ListView,} from 'react-native';
 
-export default class LearnReactnative extends Component {
+//Step 2 :  write code CLASS : (Component) : RENDER
+// ex. 10 screen -> 10 class like this //
+// View == Component//too // small Component
+class LearnReactnative extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <SquareComponent></SquareComponent>
+        <SquareComponent></SquareComponent>
+      </View>
+    );
+  }
+}
 
-      <View style = {styles.row}>
-
-         <View  style = {styles.column}>
-         </View>
-         <View  style = {styles.column}>
-           <Text style = {styles.number}>2 </Text>
-           <Text style = {styles.text}>ABC</Text>
-         </View>
-         <View  style = {styles.column}>
-         </View>
-
-      </View>
-      <View style = {styles.row}>
-
-      <View  style = {styles.column}>
-      </View>
-      <View  style = {styles.column}>
-      </View>
-      <View  style = {styles.column}>
-      </View>
-
-      </View>
-      <View style = {styles.row}>
-
-      <View  style = {styles.column}>
-      </View>
-      <View  style = {styles.column}>
-      </View>
-      <View  style = {styles.column}>
-      </View>
-
-      </View>
-      <View style = {styles.row}>
-
-      <View  style = {styles.column}>
-      </View>
-      <View  style = {styles.column}>
-      </View>
-      <View  style = {styles.column}>
-      </View>
-
-      </View>
-
-      </View>
+export default class SquareComponent extends Component{
+  render(){
+    return(
+       <View style = {styles.square}>
+       </View>
     );
   }
 }
@@ -68,36 +39,17 @@ export default class LearnReactnative extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: '#cccccc',
-    //flexDirection :'row',
     marginTop:20
   },
-  row:{
-    flex:1,
-    backgroundColor:'#ffffff',
-    borderBottomColor: '#cccccc',
-    borderBottomWidth : 1,
-    flexDirection:'row'
-  },
-  column:{
-    flex:1,
-    flexDirection :'column',
-    backgroundColor:'#ffffff',
-    borderRightColor: '#cccccc',
-    borderRightWidth : 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  number:{
-    fontSize : 30,
-  },
-  text :{
-    fontSize: 15,
+  square:{
+    width: 100,
+    height : 100,
+    backgroundColor:'red',
+    borderWidth : 1
   }
-
 });
 
-//  flexDirection :'row'
+
+//Step 3 :  registerComponent //chinh
 AppRegistry.registerComponent('LearnReactnative', () => LearnReactnative);
