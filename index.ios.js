@@ -12,6 +12,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Navigator,
   ListView,} from 'react-native';
 
 import Square from "./component/Square.js";
@@ -21,49 +22,73 @@ import Square from "./component/Square.js";
 // View == Component//too // small Component
 class LearnReactnative extends Component {
 
-  constructor(props){
-  super(props);
-  this.state = {
-    number:1,
-  }
-}
+  renderScene(route,navigator){
+    switch (route.name) {
 
-  clickme(){
-     console.log('You click on my ass');
-     this.setState({
-        number:this.state.number+1 ,
-     });
+      case "red":  return (<RedScreen clickRed={()=>{
+        navigator.push({name:"yellow",
+        passProps:{
+          first : "Thanh",
+          last : "Nguyen",
+        }},
+      );
+      }}
+
+          />);
+
+      case "yellow": return (<YellowScreen clickYellow={()=>{
+        navigator.pop({name:'red'})
+        ;}}
+
+        firstname = {route.passProps.first}
+        lastname = {route.passProps.last}
+        />);
+
+        break;
+      default:
+    }
   }
   render() {
     return (
-      <View style={styles.container}>
+      <Navigator
+        initialRoute = {{name:"red"}}
+        renderScene  = {this.renderScene}
+      />
+    );
+  }
+}
 
-        <Text style = {{color:'red', fontSize:40, textAlign:'center'}}>{this.state.number}</Text>
 
-        <TouchableOpacity onPress = {()=>{this.clickme()}}>
-         <View style = {styles.button}>
-          <Text style = {{color:"#ffffff", textAlign: 'center'}}>This is a fucking button.. click me</Text>
-         </View>
-        </TouchableOpacity>
 
-        <Custome name="Thanh DT"/>
-        <Custome name="Thanh Nguyen"/>
-        <Square title = "this is a fucking title" content = "this is a fucking content" />
+class RedScreen extends Component {
 
+  render() {
+    return (
+      <View style={{backgroundColor:'red', flex:1 }}>
+      <TouchableOpacity onPress= {this.props.clickRed} textback = "textback to red">
+      <Text style={{color:'yellow', marginTop:100, textAlign:'center'}} >Move to yellow</Text>
+      </TouchableOpacity >
       </View>
     );
   }
 }
 
-export default class Custome extends Component{
-  render(){
-    return(
-       <View style = {styles.square}>
-         <Text  style= {{color:'#ffffff'}}>{this.props.name}</Text>
-       </View>
+class YellowScreen extends Component {
+
+  render() {
+    return (
+      <View style={{backgroundColor:'yellow', flex:1 }}>
+
+        <Text style = {{color:'red', textAlign:'center', marginTop: 100}}>{this.props.firstname}, {this.props.lastname}</Text>
+
+      <TouchableOpacity onPress = {this.props.clickYellow}>
+        <Text style = {{color:'red', textAlign:'center', marginTop: 100}}>Back to Red</Text>
+      </TouchableOpacity>
+      </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
